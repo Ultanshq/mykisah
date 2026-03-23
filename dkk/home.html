@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sultan Iskhaq - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/home.css">
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">SULTAN<span>WIBU</span></a>
+        
+        <div class="burger" id="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="pengalaman.html" style="transition-delay: 0.1s;">Pengalaman</a></li>
+            <li><a href="sertifikat.html" style="transition-delay: 0.2s;">Sertifikat</a></li>
+            <li><a href="kesukaan.html" style="transition-delay: 0.3s;">Kesukaan</a></li>
+            <li><a href="contact.html" style="transition-delay: 0.4s;">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="content-left">
+            <h2>Ketua OSIS & TKJ Student</h2>
+            <h1>Sultan Iskhaq Riyadi</h1>
+            <p>Seorang wibu peminat Cybersecurity dan Networking dari SMK IBG Bogor. Ranking 1 paralel yang suka tantangan teknis dan aktif dalam organisasi (pinter + ganteng).</p>
+            <div class="btn-group">
+                <a href="pengalaman.html" class="btn btn-primary">Lihat Project</a>
+            </div>
+        </div>
+
+        <div class="content-right">
+            <div class="image-box">
+                <img src="../dkk/picture/myfoto.jpeg" alt="Sultan">
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-links li');
+
+        burger.addEventListener('click', () => {
+            // Toggle Nav
+            nav.classList.toggle('active');
+            
+            // Burger Animation
+            burger.classList.toggle('toggle');
+        });
+
+        // Close menu when link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                burger.classList.remove('toggle');
+            });
+        });
+    </script>
+</body>
+</html>

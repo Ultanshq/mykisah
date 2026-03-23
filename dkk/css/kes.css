@@ -1,0 +1,108 @@
+
+        :root {
+            --ocean-deep: #075985;
+            --ocean-mid: #0ea5e9;
+            --accent: #22d3ee;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-hover: rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- Dasar & Navigasi --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body {
+            background: radial-gradient(circle at center, var(--ocean-mid), var(--ocean-deep));
+            color: white;
+            min-height: 100vh;
+            padding-top: 80px;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed; top: 0; width: 100%;
+            padding: 15px 8%; display: flex;
+            justify-content: space-between; align-items: center;
+            z-index: 1000; background: rgba(7, 89, 133, 0.6);
+            backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass);
+        }
+        .logo { font-weight: 800; font-size: 1.4rem; text-decoration: none; color: white; }
+        .logo span { color: var(--accent); }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 30px 6%; }
+
+        /* --- Header --- */
+        .intro-header { text-align: center; margin-bottom: 40px; }
+        .intro-header h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800; }
+        .intro-header p { opacity: 0.8; font-weight: 300; margin-top: 5px; }
+
+        /* --- Grid Hobi & Minat --- */
+        .interest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .interest-card {
+            background: var(--glass);
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 4px solid var(--accent);
+            transition: 0.3s;
+        }
+        .interest-card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--accent); display: flex; align-items: center; gap: 10px; }
+        .interest-card p { font-size: 0.85rem; opacity: 0.8; line-height: 1.6; }
+
+        /* --- Playlist Section --- */
+        .section-title { margin: 40px 0 20px; font-size: 1.4rem; font-weight: 700; border-left: 4px solid white; padding-left: 15px; }
+        
+        .playlist-box {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            border-radius: 25px;
+            border: 1px solid var(--glass);
+            margin-bottom: 50px;
+        }
+        .song-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .song-item:last-child { border: none; }
+        .song-name h4 { font-size: 0.95rem; }
+        .song-name p { font-size: 0.75rem; opacity: 0.6; }
+        .so7-badge { background: var(--accent); color: var(--ocean-deep); font-size: 0.65rem; padding: 3px 10px; border-radius: 10px; font-weight: 800; }
+
+        /* --- Galeri 3 Foto --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        .photo-box {
+            aspect-ratio: 1/1;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 3px solid var(--glass);
+            transition: 0.4s;
+        }
+        .photo-box img { width: 100%; height: 100%; object-fit: cover; }
+        .photo-box:hover { transform: scale(1.05); border-color: white; }
+
+        /* --- Note/Quote --- */
+        .personal-note {
+            text-align: center;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            font-style: italic;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        /* --- Responsif Mobile --- */
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: 1fr; } /* Foto tumpuk ke bawah di HP */
+            .photo-box { aspect-ratio: 4/3; width: 90%; margin: 0 auto; }
+            .container { padding: 20px 5%; }
+        }

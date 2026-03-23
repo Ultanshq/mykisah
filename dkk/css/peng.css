@@ -1,0 +1,88 @@
+        :root {
+            --ocean-deep: #075985;
+            --ocean-mid: #0ea5e9;
+            --accent: #22d3ee;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            background: linear-gradient(180deg, var(--ocean-mid), var(--ocean-deep));
+            color: white;
+            min-height: 100vh;
+            padding-top: 100px; /* Jarak untuk Navbar fixed */
+        }
+
+        /* --- Navbar (Sama dengan Home) --- */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            padding: 20px 8%; display: flex;
+            justify-content: space-between; align-items: center;
+            z-index: 1000; background: rgba(7, 89, 133, 0.4);
+            backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass);
+        }
+        .logo { font-weight: 800; font-size: 1.5rem; text-decoration: none; color: white; }
+        .logo span { color: var(--accent); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 8%; }
+
+        header { text-align: center; margin-bottom: 60px; animation: fadeInDown 0.8s ease; }
+        header h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; }
+        header p { opacity: 0.8; font-weight: 300; letter-spacing: 1px; }
+
+        /* --- Experience Grid --- */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            padding: 35px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.8s ease backwards;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-12px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .icon { font-size: 2.5rem; margin-bottom: 20px; }
+        .card h3 { font-size: 1.3rem; margin-bottom: 12px; color: var(--accent); }
+        .card p { font-size: 0.95rem; opacity: 0.8; line-height: 1.6; flex-grow: 1; }
+
+        /* Tech Tags */
+        .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 25px; }
+        .tag {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: var(--accent);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 20px 5%; }
+            .card { padding: 25px; }
+        }

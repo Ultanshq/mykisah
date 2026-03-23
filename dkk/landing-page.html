@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sea-dark: #075985;
+            --sea-light: #0ea5e9;
+            --accent-cyan: #22d3ee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--sea-dark);
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            /* Gradasi radial memberikan efek kedalaman air laut */
+            background: radial-gradient(circle at center, var(--sea-light) 0%, var(--sea-dark) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        /* Container untuk menampung huruf-huruf */
+        .text-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 90%;
+            gap: 2px;
+        }
+
+        /* Animasi per Huruf */
+        .letter {
+            display: inline-block;
+            font-size: clamp(1.2rem, 8vw, 2.2rem);
+            font-weight: 600;
+            color: white;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: emerge 0.6s ease forwards;
+            text-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Jarak antar kata */
+        .space {
+            width: 12px;
+        }
+
+        @keyframes emerge {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Efek Keluar (Transisi ke Home) */
+        .loader-exit {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        /* Watermark Sultan di bawah */
+        .watermark {
+            position: absolute;
+            bottom: 40px;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            animation: fadeIn 2s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 0.4; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <div class="text-wrapper" id="text-container">
+            </div>
+        <div class="watermark">Sultan Iskhaq R.</div>
+    </div>
+
+    <script>
+        const phrase = "hallo teman sultan, tunggu yaa...";
+        const container = document.getElementById('text-container');
+
+        // Logic memecah kalimat jadi huruf agar animasi satu per satu
+        phrase.split("").forEach((char, index) => {
+            const span = document.createElement('span');
+            
+            if (char === " ") {
+                span.className = "space";
+            } else {
+                span.className = "letter";
+                span.innerText = char;
+                // Delay 0.05 detik per huruf agar mengalir
+                span.style.animationDelay = `${index * 0.05}s`;
+            }
+            
+            container.appendChild(span);
+        });
+
+        // Tunggu halaman benar-benar termuat
+        window.addEventListener('load', () => {
+            // Hitung total durasi animasi huruf + sedikit jeda (total ~4 detik)
+            const waitTime = (phrase.length * 50) + 1500;
+
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.classList.add('loader-exit');
+
+                // Pindah ke home.html setelah animasi slide-up selesai
+                setTimeout(() => {
+                    window.location.href = "home.html";
+                }, 800); 
+
+            }, waitTime);
+        });
+    </script>
+</body>
+</html>

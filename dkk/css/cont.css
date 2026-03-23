@@ -1,0 +1,76 @@
+        :root {
+            --ocean-deep: #075985;
+            --ocean-mid: #0ea5e9;
+            --accent: #22d3ee;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body {
+            background: linear-gradient(180deg, var(--ocean-mid), var(--ocean-deep));
+            color: white;
+            min-height: 100vh;
+            padding-top: 100px; /* Jarak agar tidak tertutup Navbar */
+        }
+
+        /* --- Navbar (Sama dengan Pengalaman) --- */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            padding: 20px 8%; display: flex;
+            justify-content: space-between; align-items: center;
+            z-index: 1000; background: rgba(7, 89, 133, 0.4);
+            backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass);
+        }
+        .logo { font-weight: 800; font-size: 1.5rem; text-decoration: none; color: white; }
+        .logo span { color: var(--accent); }
+
+        .container { max-width: 600px; margin: 0 auto; padding: 40px 8%; }
+
+        /* --- Header (Sama dengan Pengalaman) --- */
+        header { text-align: center; margin-bottom: 40px; animation: fadeInDown 0.8s ease; }
+        header h1 { font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800; }
+        header p { opacity: 0.8; font-weight: 300; letter-spacing: 1px; }
+
+        /* --- Contact List --- */
+        .contact-list { display: flex; flex-direction: column; gap: 15px; }
+
+        .contact-item {
+            display: flex; align-items: center; justify-content: space-between;
+            background: var(--glass);
+            padding: 18px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 0.8s ease backwards;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-info { display: flex; align-items: center; gap: 15px; }
+        .icon { font-size: 1.5rem; }
+        .label { font-weight: 600; font-size: 1rem; }
+
+        footer { text-align: center; margin-top: 60px; font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px; }
+
+        /* --- Animations --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 20px 5%; }
+            .contact-item { padding: 15px 20px; }
+        }
